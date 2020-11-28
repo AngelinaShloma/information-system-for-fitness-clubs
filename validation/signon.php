@@ -21,7 +21,7 @@ if (mysqli_num_rows($query) == 1) {
     } else if ($_SESSION['user']['id'] == 2) {
         header('Location: ../main manager/menu-main-manager.php');
     } else if ($_SESSION['user']['id'] == 3) {
-        header('Location: ../sales manager/menu-sales-manager.php');
+        header('Location: ../sales manager/menu-sales-manager-1.php');
     }
     
 } else {
