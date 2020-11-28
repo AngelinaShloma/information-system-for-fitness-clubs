@@ -10,6 +10,7 @@ require_once 'connect.php';
     <meta charset="UTF-8">
     <title>FITNESS</title>
     <style>
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 body {
   background: #FFFFFF;
@@ -160,34 +161,16 @@ header::after {
         }
         
 a.button {
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  padding: 6px 20px 0px 10px;
-  margin: 10px 8px 5px 0px;
   display: inline-block;
+  padding: 5px 20px;
   text-decoration: none;
-  width: 50px; height: 27px; 
-  -webkit-border-radius: 5px; 
-  -moz-border-radius: 5px; 
-  border-radius: 5px; 
-  background-color: #3a57af; 
-  -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
-  -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
-  box-shadow: 0 3px rgba(58,87,175,.75);
-  transition: all 0.1s linear 0s; 
-  top: 0px;
-  position: relative;
+  cursor: pointer;
+  background-color: #FFA500;
+  border-radius: 10px;
+  border: 1px solid #008; /* Добавляем синюю рамку */
+  color: black;
 }
 
-a.button:hover {
-  top: 3px;
-  background-color:#2e458b;
-  -webkit-box-shadow: none; 
-  -moz-box-shadow: none; 
-  box-shadow: none;
-  
-}
 input[type=radio] {
   visibility: hidden;
 }
@@ -250,6 +233,16 @@ input[type=text],input[type=password]{
   margin-top: 3px;
   padding-left: 10px;
 }
+
+.edit {
+     color: black;
+}
+.edit:visited {
+    color: black;
+}
+.edit:active {
+    color: black;
+}
     </style>
 </head>
 <body>
@@ -269,56 +262,37 @@ input[type=text],input[type=password]{
 
 <table id="myTable">
   <tr class="table-type-season-ticket">
+    <th> </th>
     <th>ФИО клиента</th>
     <th>Номер телефона</th>
     <th>Дата рождения</th>
     <th>Возраст</th>
     <th>Пол</th>
+    <th> </th>
   </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT `FIO`, `phone`, date_format(`date_of_birht`, '%d-%m-%Y'), ((YEAR(CURRENT_DATE)-YEAR(`date_of_birht`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`date_of_birht`,5)
+            $type = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, date_format(`date_of_birht`, '%d-%m-%Y'), ((YEAR(CURRENT_DATE)-YEAR(`date_of_birht`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`date_of_birht`,5)
   )) AS `age`, `sex` FROM client");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
                 ?>
     <tr>
-        <td><?= $t[0] ?></td>
+        <td><a class="edit" href="update.php?id=<?= $t[0] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+        <td style="display: none; visibility: hidden;"><?= $t[0] ?></td>
         <td><?= $t[1] ?></td>
         <td><?= $t[2] ?></td>
         <td><?= $t[3] ?></td>
         <td><?= $t[4] ?></td>
+        <td><?= $t[5] ?></td>
+        <td><a class="edit" href="#"><i class="fa fa-id-card-o" aria-hidden="true"></i></a></td>
     </tr>
     <?php
             }
     ?>
     
 </table>
-    
-<button id="btn_modal_window">Добавить нового клиента</button>
-  <div id="my_modal" class="modal">
-    <div class="modal_content">
-      <span class="close_modal_window">×</span><br>
-      <div class="testbox">
+    <a href="add_client.html" target="_self" class="button">Добавить нового клиента</a>
 
-  <form action="/sales manager/add_client.php" method="post">
-  <label id="icon">ФИО</label><br>
-  <input type="text" name="FIO"/><br>
-  <label id="icon">Номер телефона</label><br>
-  <input type="text" name="phone"/><br>
-  <label id="icon">Дата рождения</label><br>
-  <input type="text" name="birth" placeholder="00-00-0000"/><br>
-  <div class="gender">
-    <label id="icon">Пол</label><br>
-    <input type="radio" value="м" id="male" name="gender" checked/>
-    <label for="male" class="radio" chec>М</label>
-    <input type="radio" value="ж" id="female" name="gender" />
-    <label for="female" class="radio">Ж</label>
-   </div> 
-      <button type="submit">Добавить</button>
-  </form>
-</div>
-    </div>
-  </div>
 <script>
     
  var modal = document.getElementById("my_modal");
