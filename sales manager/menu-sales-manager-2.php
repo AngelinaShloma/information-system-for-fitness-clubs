@@ -135,8 +135,9 @@ header::after {
     <h1 class="logo">Менеджер по продажам</h1>
   <nav class="site-nav">
       <ul>
-        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Продажа абонементов</a></li> 
+        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Продажа абонементов</a></li> 
         <li><a href="menu-sales-manager-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
+        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Абонементы</a></li>
       </ul> 
   </nav>
 </div>
@@ -147,6 +148,7 @@ header::after {
 
 <table id="myTable">
   <tr class="table-type-season-ticket">
+    <th>Код</th>
     <th>Наименование</th>
     <th>Стоимость</th>
     <th>Длительность, мес.</th>
@@ -154,7 +156,7 @@ header::after {
     <th>Вид занятий</th>
   </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT `name`, `cost`, `duration`, `time`, `available_classes` FROM type_season_ticket");
+            $type = mysqli_query($connect, "SELECT * FROM type_season_ticket");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
                 ?>
@@ -164,6 +166,7 @@ header::after {
         <td><?= $t[2] ?></td>
         <td><?= $t[3] ?></td>
         <td><?= $t[4] ?></td>
+        <td><?= $t[5] ?></td>
     </tr>
     <?php
             }

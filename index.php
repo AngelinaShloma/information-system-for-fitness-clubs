@@ -18,8 +18,8 @@ session_start();
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: Georgia, serif;
-            background-color: darkseagreen;
+            background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
+            color: aliceblue;
         }
         p {
             margin-top: 10px;
@@ -31,31 +31,36 @@ session_start();
         }
         
         input {
-            margin: 10px 0;
+            margin: 5px 0;
             padding: 10px;
             border: unset;
             border-bottom: 2px solid #e3e3e3;
             outline: none;
         }
         button {
+            margin-top: 5px;
             padding: 10px;
-            background: #e3e3e3;
             border: unset;
             cursor: pointer;
+            background: white;
+            color: #696969;
         }
         .msg {
             background-color: #e3e3e3;
             padding: 10px;
             text-align: center;
+            background: white;
+            color: #696969;
+            font-size: 14px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
     
     <form action="/validation/signon.php" method="post">
-        <label>Логин</label>
+        
         <input type="text" name="login" placeholder="Введите логин">
-        <label>Пароль</label>
         <input type="password" name="password" placeholder="Введите пароль">
         <button type="submit">Войти</button>
         <?php
