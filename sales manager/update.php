@@ -14,7 +14,8 @@ $client = mysqli_fetch_assoc($client);
 <head>
     <meta charset="UTF-8">
     <title>FITNESS</title>
-        <style>
+    <link rel="stylesheet" type="text/css" href="../styles/formStyle.scss"/>
+       <!-- <style>
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +52,7 @@ $client = mysqli_fetch_assoc($client);
             text-decoration: none;
             text-align: center;
         }
-    </style>
+    </style> -->
 </head>
 <body>
   <form action="/sales manager/updatephp.php" method="post">

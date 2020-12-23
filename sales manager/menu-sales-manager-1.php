@@ -273,7 +273,7 @@ input[type=text],input[type=password]{
     ?>
     
 </table>
-    <a href="add_client.html" target="_self" class="button">+ Добавить нового клиента</a>
+    <a href="add_client.php" target="_self" class="button">+ Добавить нового клиента</a>
 
 <script>
     
@@ -301,7 +301,7 @@ function myFunction1() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
@@ -318,7 +318,7 @@ function myFunction1() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[3];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";

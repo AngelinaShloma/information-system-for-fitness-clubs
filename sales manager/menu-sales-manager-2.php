@@ -240,8 +240,7 @@ input[type=text],input[type=password]{
 </div>
 </header>
     <input type="text" id="myInput" onkeyup="myFunction1()" placeholder="Длительность" title="Type in a name">
-    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Время посещения" title="Type in a name">
-    <!-- <input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="Типы занятий" title="Type in a name"> -->
+    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Время начала посещения" title="Type in a name">
 
     <table id="myTable">
         <tr class="table-type-season-ticket">
@@ -252,7 +251,7 @@ input[type=text],input[type=password]{
             <th>Стоимость</th>
         </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT * FROM type_season_ticket");
+            $type = mysqli_query($connect, "SELECT type_season_ticket_id, duration, time_format(`time_start`, '%H-%i'), time_format(`time_end`, '%H-%i'), cost FROM type_season_ticket");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
         ?>
@@ -262,7 +261,6 @@ input[type=text],input[type=password]{
                 <td><?= $t[2] ?></td>
                 <td><?= $t[3] ?></td>
                 <td><?= $t[4] ?></td>
-                <!-- <td><?= $t[5] ?></td> -->
             </tr>
         <?php
                 }
@@ -277,7 +275,7 @@ function myFunction1() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
@@ -294,7 +292,7 @@ function myFunction1() {
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";

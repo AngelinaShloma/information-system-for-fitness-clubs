@@ -1,6 +1,7 @@
 <?php
 
 require_once 'connect.php';
+include_once 'update_status.php'; 
 
 ?>
 
@@ -239,13 +240,10 @@ input[type=text],input[type=password]{
   </nav>
 </div>
 </header>
-    <input type="text" id="myInput" onkeyup="myFunction1()" placeholder="Длительность" title="Type in a name">
-    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Время посещения" title="Type in a name">
-    <input type="text" id="myInput3" onkeyup="myFunction3()" placeholder="Типы занятий" title="Type in a name">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="ФИО" title="Type in a name">
 
 <table id="myTable">
   <tr class="table-season-ticket">
-    <th> </th>
     <th>Код</th>
     <th>ФИО клиента</th>
     <th>Дата начала</th>
@@ -258,13 +256,11 @@ input[type=text],input[type=password]{
             foreach ($type as $t) {
                 ?>
     <tr>
-        <td><a class="edit" href="payment_history.php?id=<?= $t[0] ?>"><i class="fa fa-history" aria-hidden="true"></i></a></td>
         <td><?= $t[0] ?></td>
         <td><?= $t[1] ?></td>
         <td><?= $t[2] ?></td>
         <td><?= $t[3] ?></td>
         <td><?= $t[4] ?></td>
-        <td><a class="edit" href="add_payment.php?id=<?= $t[0] ?>"><i class="fa fa-credit-card" aria-hidden="true"></i></a></td>
     </tr>
     <?php
             }
@@ -273,26 +269,9 @@ input[type=text],input[type=password]{
 </table>
 
 <script>
-function myFunction1() {
+function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-    function myFunction2() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput2");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
