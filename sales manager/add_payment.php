@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+require_once 'connect.php';
+
+$season_ticket_id = $_GET['id'];
 ?>
 
 <!doctype html>
@@ -7,9 +10,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>FITNESS</title>
-    <link rel="stylesheet" type="text/css" href="index.css"/>
-
-    <!-- <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -22,9 +23,6 @@ session_start();
             justify-content: center;
             background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
             color: aliceblue;
-        }
-        p {
-            margin-top: 10px;
         }
         form {
             display: flex;
@@ -39,39 +37,24 @@ session_start();
             border-bottom: 2px solid #e3e3e3;
             outline: none;
         }
-        button {
+        button, a.button {
             margin-top: 5px;
             padding: 10px;
             border: unset;
             cursor: pointer;
             background: white;
             color: #696969;
-        }
-        .msg {
-            background-color: #e3e3e3;
-            padding: 10px;
+            text-decoration: none;
             text-align: center;
-            background: white;
-            color: #696969;
-            font-size: 14px;
-            text-transform: uppercase;
         }
-    </style> -->
+    </style>
 </head>
 <body>
-    
-    <form action="/validation/signon.php" method="post">
-        
-        <input type="text" name="login" placeholder="Введите логин">
-        <input type="password" name="password" placeholder="Введите пароль">
-        <button type="submit">Войти</button>
-        <?php
-            if ($_SESSION['message']){
-                echo '<p class="msg">' . $_SESSION['message'] . '</p>';
-            }
-            unset($_SESSION['message']);
-        ?>
+  <form action="/sales manager/add_paymentphp.php" method="post">
+    <input type="hidden" name="id" value="<?= $season_ticket_id ?>"/><br>
+    <label id="icon">Сумма платежа</label><br>
+    <input type="text" name="amount"/><br>
+    <button type="submit">Добавить</button>
+    <a href="menu-sales-manager-3.php" target="_self" class="button">Отмена</a>
     </form>
-    
 </body>
-</html>

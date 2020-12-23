@@ -19,9 +19,9 @@ if (mysqli_num_rows($query) == 1) {
     if ($_SESSION['user']['id'] == 1) {
         header('Location: ../administrator/menu-administrator.php');
     } else if ($_SESSION['user']['id'] == 2) {
-        header('Location: ../main manager/menu-main-manager.php');
+        header('Location: ../mainManager/welcomePage/welcomePage.php');
     } else if ($_SESSION['user']['id'] == 3) {
-        header('Location: ../sales manager/menu-sales-manager-1.php');
+        header('Location: ../sales manager/welcomePage/welcomePage.php');
     }
     
 } else {

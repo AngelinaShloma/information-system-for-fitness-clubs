@@ -1,0 +1,33 @@
+/* @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
+    color: aliceblue;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+input {
+    margin: 5px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+}
+button, a.button {
+    margin-top: 5px;
+    padding: 10px;
+    border: unset;
+    cursor: pointer;
+    background: white;
+    color: #696969;
+    text-decoration: none;
+    text-align: center;
+} */

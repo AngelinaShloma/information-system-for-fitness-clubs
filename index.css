@@ -1,0 +1,59 @@
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+body {
+    font-family: "Montserrat", sans-serif;
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, rgb(88, 160, 66) 10%, rgb(88, 160, 66) 100%);
+    color: aliceblue;
+}
+p {
+    font-size: 20px;
+
+    margin-top: 10px;
+}
+form {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+input {
+    font-size: 20px;
+    border-radius: 10px;
+
+    margin: 5px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+}
+button {
+    margin-top: 5px;
+    padding: 10px;
+    border: unset;
+    cursor: pointer;
+    background: white;
+    color: #303030;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 550;
+}
+.msg {
+    margin-top: 5px;
+    padding: 10px;
+    border: unset;
+    cursor: pointer;
+    background: white;
+    color: rgb(252, 6, 18);
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 550;
+}
