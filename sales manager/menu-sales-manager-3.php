@@ -249,9 +249,12 @@ input[type=text],input[type=password]{
     <th>Дата начала</th>
     <th>Дата окончания</th>
     <th>Статус</th>
+    <th>Сумма</th>
+    <th>Дата оплаты</th>
+    <th>Способ оплаты</th>
   </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT season_ticket.season_ticket_id, FIO, date_format(date_start, '%d-%m-%Y'), date_format(date_end, '%d-%m-%Y'), status FROM season_ticket, client WHERE season_ticket.client_id = client.client_id");
+            $type = mysqli_query($connect, "SELECT season_ticket.season_ticket_id, FIO, date_format(date_start, '%d-%m-%Y'), date_format(date_end, '%d-%m-%Y'), status, amount, date_format(date_of_amount, '%d-%m-%Y'), payment_method FROM season_ticket, client WHERE season_ticket.client_id = client.client_id");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
                 ?>
@@ -261,6 +264,9 @@ input[type=text],input[type=password]{
         <td><?= $t[2] ?></td>
         <td><?= $t[3] ?></td>
         <td><?= $t[4] ?></td>
+        <td><?= $t[5] ?></td>
+        <td><?= $t[6] ?></td>
+        <td><?= $t[7] ?></td>
     </tr>
     <?php
             }

@@ -49,7 +49,7 @@
     <label id="icon">ФИО</label><br>
     <input type="text" name="FIO" required = "required"/><br>
     <label id="icon">Номер телефона</label><br>
-    <input type="tel" name="phone" required = "required" pattern="8[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}"/><br>
+    <input type="tel" name="phone" required = "required" pattern="8[0-9]{10}"/><br>
     <label id="icon">Дата рождения</label><br>
     <input id="datefield" type="date" name="birth" required = "required" 
           min="1910-01-01" max=""/><br>

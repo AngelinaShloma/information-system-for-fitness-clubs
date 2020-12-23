@@ -253,7 +253,7 @@ input[type=text],input[type=password]{
     <th> </th>
   </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, date_format(`date_of_birht`, '%d-%m-%Y'), ((YEAR(CURRENT_DATE)-YEAR(`date_of_birht`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`date_of_birht`,5)
+            $type = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, date_format(`date_of_birth`, '%d-%m-%Y'), ((YEAR(CURRENT_DATE)-YEAR(`date_of_birth`))-(RIGHT(CURRENT_DATE,5)<RIGHT(`date_of_birth`,5)
   )) AS `age`, `sex` FROM client");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
