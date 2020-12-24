@@ -1,51 +1,31 @@
+<?php
+session_start();
+  if (!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] == '') {
+        echo '
+        <script>
+          alert("Вы не вошли в систему");
+        </script>
+        ';
+     header('Location: ../index.php');
+    }
+if ($_SESSION['user']['id'] != 1){
+    echo '
+        <script>
+          alert("Вы не имеете доступа к этой странице");
+        </script>
+        ';
+     header('Location: ../index.php');
+}    
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>FITNESS</title>
     <link rel="stylesheet" type="text/css" href="../styles/formStyle.scss"/>
-
-        <!-- <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }  
-        body {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
-            color: aliceblue;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 250px;
-        }
-        
-        input {
-            margin: 5px 0;
-            padding: 10px;
-            border: unset;
-            border-bottom: 2px solid #e3e3e3;
-            outline: none;
-        }
-        button, a.button {
-            margin-top: 5px;
-            padding: 10px;
-            border: unset;
-            cursor: pointer;
-            background: white;
-            color: #696969;
-            text-decoration: none;
-            text-align: center;
-        }
-    </style> -->
 </head>
 <body>
-  <form action="/sales manager/add_clientphp.php" method="post">
+  <form action="/administrator/add_clientphp.php" method="post">
     <label id="icon">ФИО</label><br>
     <input type="text" name="FIO" required = "required"/><br>
     <label id="icon">Номер телефона</label><br>
@@ -61,12 +41,12 @@
           <label for="female" class="radio">Ж</label>
        </div> 
     <button type="submit">Добавить</button>
-    <a href="menu-sales-manager-1.php" target="_self" class="button">Отмена</a>
+    <a href="menu-administrator-1.php" target="_self" class="button">Отмена</a>
     </form>
-    <script>
-        var today = new Date();
+<script>
+var today = new Date();
 var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0!
+var mm = today.getMonth()+1;
 var yyyy = today.getFullYear();
  if(dd<10){
         dd='0'+dd
@@ -77,5 +57,5 @@ var yyyy = today.getFullYear();
 
 today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("datefield").setAttribute("max", today);
-    </script>
+</script>
 </body>

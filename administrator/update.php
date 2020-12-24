@@ -1,10 +1,29 @@
 <?php
-
-require_once 'connect.php';
-
+session_start();
+require_once '../validation/connect.php';
+if (!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] == '') {
+        echo '
+        <script>
+          alert("Вы не вошли в систему");
+        </script>
+        ';
+     header('Location: ../index.php');
+    }
+if ($_SESSION['user']['id'] != 1){
+    echo '
+        <script>
+          alert("Вы не имеете доступа к этой странице");
+        </script>
+        ';
+     header('Location: ../index.php');
+}
 $client_id = $_GET['id'];
 $client = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, `date_of_birth`, `sex` FROM client WHERE client_id = '$client_id' ");
+if(!$client){
+    echo 'Ошибка:' .mysqli_error($connect);
+}else{
 $client = mysqli_fetch_assoc($client);
+}
 
 ?>
 
@@ -15,47 +34,9 @@ $client = mysqli_fetch_assoc($client);
     <meta charset="UTF-8">
     <title>FITNESS</title>
     <link rel="stylesheet" type="text/css" href="../styles/formStyle.scss"/>
-       <!-- <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }  
-        body {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
-            color: aliceblue;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 250px;
-        }
-        
-        input {
-            margin: 5px 0;
-            padding: 10px;
-            border: unset;
-            border-bottom: 2px solid #e3e3e3;
-            outline: none;
-        }
-        button, a.button {
-            margin-top: 5px;
-            padding: 10px;
-            border: unset;
-            cursor: pointer;
-            background: white;
-            color: #696969;
-            text-decoration: none;
-            text-align: center;
-        }
-    </style> -->
 </head>
 <body>
-  <form action="/sales manager/updatephp.php" method="post">
+  <form action="/administrator/updatephp.php" method="post">
     <input type="hidden" name="id" value="<?= $client['client_id'] ?>"/>
     <label id="icon">ФИО</label><br>
     <input type="text" name="FIO" value="<?= $client['FIO'] ?>"/><br>
@@ -90,7 +71,7 @@ HTML;
 ?>
        </div> 
     <button type="submit">Обновить</button>
-    <a href="menu-sales-manager-1.php" target="_self" class="button">Отмена</a>
+    <a href="menu-administrator-1.php" target="_self" class="button">Отмена</a>
     </form>
 </body>
 </html>

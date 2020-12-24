@@ -1,7 +1,22 @@
 <?php
-
-require_once 'connect.php';
-
+session_start();
+require_once '../validation/connect.php';
+if (!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] == '') {
+        echo '
+        <script>
+          alert("Вы не вошли в систему");
+        </script>
+        ';
+     header('Location: ../index.php');
+    }
+if ($_SESSION['user']['id'] != 1){
+    echo '
+        <script>
+          alert("Вы не имеете доступа к этой странице");
+        </script>
+        ';
+     header('Location: ../index.php');
+}
 $client_id = $_POST['id'];
 ?>
 
@@ -11,49 +26,35 @@ $client_id = $_POST['id'];
     <meta charset="UTF-8">
     <title>FITNESS</title>
     <link rel="stylesheet" type="text/css" href="../styles/formStyle.scss"/>
-     <!--   <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }  
-        body {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(-45deg, #FF8C00 10%, #FFA500 100%);
-            color: aliceblue;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 250px;
-        }
-        
-        input {
+     <style>
+        select {
+            border-radius: 10px;
             margin: 5px 0;
             padding: 10px;
             border: unset;
             border-bottom: 2px solid #e3e3e3;
             outline: none;
         }
-        button, a.button {
-            margin-top: 5px;
-            padding: 10px;
-            border: unset;
-            cursor: pointer;
-            background: white;
-            color: #696969;
-            text-decoration: none;
-            text-align: center;
-        }
-    </style>-->
+         option {
+            border-radius: 2px;
+            padding: 5px;
+            border-bottom: 2px solid #e3e3e3;
+            outline: none;
+         }
+    </style>
 </head>
 <body>
-  <form action="/sales manager/add_ticketphp.php" method="post">
+  <form action="/administrator/add_ticketphp.php" method="post">
     <label id="icon">Тип абонемента</label><br>
-    <input type="text" name="type"/><br>
+    <?php
+$query = mysqli_query($connect, "SELECT type_season_ticket_id FROM type_season_ticket WHERE status_ticket = 1");
+echo "<select name = 'type'>";
+while($object = mysqli_fetch_object($query)){
+echo "<option value = '$object->type_season_ticket_id' > $object->type_season_ticket_id </option>";
+}
+echo "</select>";
+?>
+    
     <input type="hidden" name="id" value="<?= $client_id ?>"/><br>
     <label id="icon">Дата начала</label><br>
     <input id="datefield" type="date" name="date_start" min=""/><br>
@@ -65,7 +66,7 @@ $client_id = $_POST['id'];
           <label for="female" class="radio">Наличные</label>
       </div>
     <button type="submit">Добавить</button>
-    <a href="menu-sales-manager-1.php" target="_self" class="button">Отмена</a>
+    <a href="menu-administrator-1.php" target="_self" class="button">Отмена</a>
     </form>
     <script>
         var today = new Date();

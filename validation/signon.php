@@ -17,11 +17,10 @@ if (mysqli_num_rows($query) == 1) {
     ];
     
     if ($_SESSION['user']['id'] == 1) {
-        header('Location: ../administrator/menu-administrator.php');
+        header('Location: ../administrator/welcomePage/welcomePage.php');
     } else if ($_SESSION['user']['id'] == 2) {
         header('Location: ../mainManager/welcomePage/welcomePage.php');
     } else if ($_SESSION['user']['id'] == 3) {
-        header('Location: ../sales manager/welcomePage/welcomePage.php');
     }
     
 } else {
