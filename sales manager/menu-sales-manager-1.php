@@ -228,13 +228,13 @@ input[type=text],input[type=password]{
 <body>
     <header>
 <div class="container">
-    <h1 class="access">Менеджер по продажам</h1>
+    <h1 class="access">Администратор</h1>
     <a class="exit" href="../validation/signon.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
   <nav class="site-nav">
       <ul>
-        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Продажа абонементов</a></li> 
+        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Абонементы</a></li> 
         <li><a href="menu-sales-manager-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
-        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Абонементы</a></li>
+        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Запись</a></li>
       </ul> 
   </nav>
 </div>
@@ -266,7 +266,7 @@ input[type=text],input[type=password]{
         <td><?= $t[3] ?></td>
         <td><?= $t[4] ?></td>
         <td><?= $t[5] ?></td>
-        <td><a class="edit" href="add_ticket.php?id=<?= $t[0] ?>"><i class="fa fa-id-card-o" aria-hidden="true"></i></a></td>
+        <td><a class="edit" href="all_tickets_of_client.php?id=<?= $t[0] ?>"><i class="fa fa-id-card-o" aria-hidden="true"></i></a></td>
     </tr>
     <?php
             }

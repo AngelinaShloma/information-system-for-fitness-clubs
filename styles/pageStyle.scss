@@ -105,6 +105,74 @@ header::after {
   color: #464655;
 }
 
+
+.date_t {
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 10px;
+  margin: 10px 10px;
+  position: relative;
+  color: rgb(88, 160, 66);
+  border: 1px solid rgba(88, 160, 66, .4);
+  background: none;
+  font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.date_t:before, .date_t:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  box-sizing: border-box;
+}
+.date_t:before {
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid rgb(88, 160, 66);
+  border-top: 1px solid rgb(88, 160, 66);
+  transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+}
+.date_t:after {
+  top: 0;
+  right: 0;
+  border-right: 1px solid rgb(88, 160, 66);
+  border-bottom: 1px solid rgb(88, 160, 66);
+  transition: 0s ease opacity .4s, .2s ease width, .2s ease height .2s;
+}
+.date_t:hover:before, 
+.date_t:hover:after {
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+}
+.date_t:hover:before {
+  transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
+}
+.date_t:hover:after {
+  transition: 0s ease opacity .4s, .2s ease height .4s, .2s ease width .6s;
+}
+.date_t:hover {
+  background: rgba(88, 160, 66, .2);
+}
+
+.column a {
+  color: #000000;
+  // display: block;
+  // padding: 2em 4em 2em 1.5em;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.column a:hover,
+.column a:focus {
+  // background: #E4B363;
+  color: #696969;
+}
+
 // .site-nav--icon {
 //   display: inline-block;
 //   font-size: 1.5em;
@@ -171,7 +239,7 @@ header::after {
   }
   
         
-a.button {
+a.button, .btn-sbmt {
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 550;
@@ -181,12 +249,23 @@ a.button {
   cursor: pointer;
   background-color: rgb(252, 6, 18);
   border-radius: 10px;
-  // border: 1px solid #008; /* Добавляем синюю рамку */
   color: white;
   margin-bottom: 10px;
   margin-top: 10px;
 
 }
+
+.column {
+    -webkit-column-width: 300px;
+    -moz-column-width: 300px;
+    column-width: 300px;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
+    column-gap: 30px;
+   }
 
 input[type=radio] {
   visibility: hidden;

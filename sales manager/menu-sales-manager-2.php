@@ -228,19 +228,17 @@ input[type=text],input[type=password]{
 <body>
     <header>
     <div class="container">
-    <h1 class="access">Менеджер по продажам</h1>
+    <h1 class="access">Администратор</h1>
     <a class="exit" href="../validation/signon.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
   <nav class="site-nav">
       <ul>
-        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Продажа абонементов</a></li> 
+        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Абонементы</a></li> 
         <li><a href="menu-sales-manager-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
-        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Абонементы</a></li>
+        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Запись</a></li>
       </ul> 
   </nav>
 </div>
 </header>
-    <input type="text" id="myInput" onkeyup="myFunction1()" placeholder="Длительность" title="Type in a name">
-    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Время начала посещения" title="Type in a name">
 
     <table id="myTable">
         <tr class="table-type-season-ticket">
@@ -266,42 +264,5 @@ input[type=text],input[type=password]{
                 }
         ?>
     </table>
-
-<script>
-function myFunction1() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-    function myFunction2() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput2");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
 </body>
 </html>

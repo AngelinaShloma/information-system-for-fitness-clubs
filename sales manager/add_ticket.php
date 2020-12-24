@@ -2,7 +2,7 @@
 
 require_once 'connect.php';
 
-$client_id = $_GET['id'];
+$client_id = $_POST['id'];
 ?>
 
 <!doctype html>
@@ -57,13 +57,11 @@ $client_id = $_GET['id'];
     <input type="hidden" name="id" value="<?= $client_id ?>"/><br>
     <label id="icon">Дата начала</label><br>
     <input id="datefield" type="date" name="date_start" min=""/><br>
-    <label id="icon">Сумма</label><br>
-    <input type="text" name="amount"/><br>
     <label id="icon">Способ оплаты</label><br>
       <div class="gender">
-          <input type="radio" value="card" id="card" name="way" checked/>
+          <input type="radio" value="Карта" id="card" name="way" checked/>
           <label for="male" class="radio" chec>Карта</label>
-          <input type="radio" value="cash" id="cash" name="way" />
+          <input type="radio" value="Наличные" id="cash" name="way" />
           <label for="female" class="radio">Наличные</label>
       </div>
     <button type="submit">Добавить</button>

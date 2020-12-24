@@ -3,7 +3,7 @@
 require_once 'connect.php';
 
 $client_id = $_GET['id'];
-$client = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, `date_of_birht`, `sex` FROM client WHERE client_id = '$client_id' ");
+$client = mysqli_query($connect, "SELECT `client_id`, `FIO`, `phone`, `date_of_birth`, `sex` FROM client WHERE client_id = '$client_id' ");
 $client = mysqli_fetch_assoc($client);
 
 ?>
@@ -62,7 +62,7 @@ $client = mysqli_fetch_assoc($client);
     <label id="icon">Номер телефона</label><br>
     <input type="text" name="phone"value="<?= $client['phone'] ?>"/><br>
     <label id="icon">Дата рождения</label><br>
-    <input type="text" name="birth" value="<?= date("d-m-Y", strtotime($client['date_of_birht'])) ?>"/><br>
+    <input type="text" name="birth" value="<?= date("d-m-Y", strtotime($client['date_of_birth'])) ?>"/><br>
        <div class="gender">
           <label id="icon">Пол</label><br>
            <?php

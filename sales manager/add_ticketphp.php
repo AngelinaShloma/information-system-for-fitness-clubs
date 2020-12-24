@@ -5,25 +5,18 @@ require_once 'connect.php';
 $client_id = $_POST['id'];
 $type = $_POST['type'];
 $date_start = date('Y-m-d',strtotime($_POST['date_start']));
+$number = substr($type, -2);
+$date_end = date('Y-m-d', strtotime('+' .$number. 'MONTH', strtotime($date_start)));
 if ($date_start == date("Y-m-d")){
     $status = 'активен';
 } else {
     $status = 'не активен';
 }
-$query = "SELECT duration FROM type_season_ticket WHERE type_season_ticket_id = '$type';";
-$query .= "INSERT INTO season_ticket (status, date_start, date_end, client_id, type_season_ticket_id) VALUES ('$status', '$date_start', '$date_end', '$client_id', '$type_season_ticket_id')";
-if (mysqli_multi_query($connect, $query)) {
-    do {
-        if ($result = mysqli_use_result($connect)) {
-            while ($row = mysqli_fetch_row($result)) {
-                $date_end = $row[0];
-            }
-        }
-    } while (mysqli_next_result($connect));
-}
+$today = date('Y-m-d');
+$way = $_POST['way'];
 
-/* close connection */
-mysqli_close($connect);
+mysqli_query($connect, "INSERT INTO season_ticket (status, date_start, date_end, client_id, type_season_ticket_id, payment_method, date_of_payment) VALUES ('$status', '$date_start', '$date_end', '$client_id', '$type', '$way', '$today') ");
 
-header('Location: menu-sales-manager-3.php');
+header('Location: all_tickets_of_client.php?id=' .$client_id);
+
 ?>
