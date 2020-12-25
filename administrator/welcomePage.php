@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../validation/connect.php';
+require_once '../validation/connect.php';
  if (!isset($_SESSION['user']['id']) || $_SESSION['user']['id'] == '') {
         echo '
         <script>
@@ -15,7 +15,7 @@ if ($_SESSION['user']['id'] != 1){
           alert("Вы не имеете доступа к этой странице");
         </script>
         ';
-     header('Location: ../../index.php');
+     header('Location: ../index.php');
 }
 ?>
 
@@ -34,8 +34,8 @@ if ($_SESSION['user']['id'] != 1){
     <a class="exit" href="../../index.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
   <nav class="site-nav">
       <ul>
-        <li><a href="../menu-administrator-1.php"><i class="site-nav--icon"></i>Клиентская база/Продажа абонементов</a></li> 
-        <li><a href="../menu-administrator-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
+        <li><a href="menu-administrator-1.php"><i class="site-nav--icon"></i>Клиентская база</a></li> 
+        <li><a href="menu-administrator-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
       </ul> 
   </nav>
 </div>

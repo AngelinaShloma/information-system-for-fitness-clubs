@@ -9,38 +9,41 @@ require_once 'connect.php';
 <head>
     <meta charset="UTF-8">
     <title>FITNESS</title>
-    <link rel="stylesheet" type="text/css" href="../../styles/pageStyle.scss"/>
+    <link rel="stylesheet" type="text/css" href="../styles/pageStyle.scss"/>
+
 </head>
 <body>
     <header>
     <div class="container">
-        <h1 class="access">Главный менеджер</h1>
-        <a class="exit" href="../../validation/signon.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-        <nav class="site-nav">
-            <ul>
-                <!-- <li><a href=" timetable.php"><i class="site-nav--icon"></i>Расписание</a></li>  -->
-                <!-- <li><a href="../coach/coach.php"><i class="site-nav--icon"></i>Тренерский состав</a></li> -->
-                <li><a href="../typesOfPasses/typesOfPasses.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
-            </ul> 
-        </nav>
-    </div>
-    </header>
-    <!-- <input type="text" id="myInput" onkeyup="myFunction1()" placeholder="ФИО" title="Type in a name">
-    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Номер телефона" title="Type in a name"> -->
-    <a href="../addPass/AddPass.html" target="_self" class="button">+ Добавить абонемент</a>
-
+    <h1 class="access">Администратор</h1>
+    <a class="exit" href="../validation/signon.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+  <nav class="site-nav">
+      <ul>
+        <li><a href="menu-sales-manager-1.php"><i class="site-nav--icon"></i>Клиентская база/Продажа абонементов</a></li> 
+        <li><a href="menu-sales-manager-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
+        <li><a href="menu-sales-manager-3.php"><i class="site-nav--icon"></i>Абонементы</a></li>
+      </ul> 
+  </nav>
+</div>
+</header>
+<div class="background">
+  <div class="options">
+    <h1> Поиск </h1>
+    <input type="text" id="myInput" onkeyup="myFunction1()" placeholder="Код" title="Type in a name">
+    <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Длительность" title="Type in a name">
+    <!-- <input type="text" id="myInput2" onkeyup="myFunction2()" placeholder="Время начала посещения" title="Type in a name"> -->
+</div>
     <table id="myTable">
         <tr class="table-type-season-ticket">
             <th>Код</th>
             <!-- <th>Наименование</th> -->
             <th>Длительность (в месяцах)</th>
             <th colspan = "2">Время посещения</th>
-            <!-- <th> </th> -->
-            <th>Стоимость (в рублях)</th>
-
+            <th>Стоимость</th>
         </tr>
         <?php
-            $type = mysqli_query($connect, "SELECT * FROM type_season_ticket");
+            $type = mysqli_query($connect, "SELECT type_pass_id, duration, time_format(`time_start`, '%H:%i'), time_format(`time_end`, '%H:%i'), 
+            cost FROM type_pass WHERE `type_pass`.`status` = '1'");
             $type = mysqli_fetch_all($type);
             foreach ($type as $t) {
         ?>
@@ -50,12 +53,12 @@ require_once 'connect.php';
                 <td><?= $t[2] ?></td>
                 <td><?= $t[3] ?></td>
                 <td><?= $t[4] ?></td>
-                <td><a class="delete" href="add_payment.php?id=<?= $t[0] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         <?php
                 }
         ?>
     </table>
+    </div>
 
 <script>
 function myFunction1() {

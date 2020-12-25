@@ -17,12 +17,10 @@ if (mysqli_num_rows($query) == 1) {
     ];
     
     if ($_SESSION['user']['id'] == 1) {
-        header('Location: ../administrator/welcomePage/welcomePage.php');
+        header('Location: ../administrator/welcomePage.php');
     } else if ($_SESSION['user']['id'] == 2) {
-        header('Location: ../mainManager/welcomePage/welcomePage.php');
-    } else if ($_SESSION['user']['id'] == 3) {
-    }
-    
+        header('Location: ../mainManager/welcomePage.php');
+   }   
 } else {
     $_SESSION['message'] = 'Неверный логин или пароль';
     header('Location: ../index.php');

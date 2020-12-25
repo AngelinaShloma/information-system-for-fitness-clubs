@@ -10,19 +10,19 @@ body {
     color: aliceblue;
 }
 p {
-    font-size: 20px;
+    /* font-size: 20px; */
 
     margin-top: 10px;
 }
 form {
-    font-size: 20px;
+    /* font-size: 20px; */
     display: flex;
     flex-direction: column;
     width: 300px;
 }
 
 input {
-    font-size: 20px;
+    /* font-size: 20px; */
     border-radius: 10px;
 
     margin: 5px 0;
@@ -43,6 +43,11 @@ button {
     border-radius: 10px;
     text-align: center;
     font-weight: 550;
+    /* outline: none; */
+}
+button:active,
+button:focus {
+    outline: none;
 }
 .msg {
     margin-top: 5px;

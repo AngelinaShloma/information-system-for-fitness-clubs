@@ -47,10 +47,10 @@ $client_id = $_POST['id'];
   <form action="/administrator/add_ticketphp.php" method="post">
     <label id="icon">Тип абонемента</label><br>
     <?php
-$query = mysqli_query($connect, "SELECT type_season_ticket_id FROM type_season_ticket WHERE status_ticket = 1");
+$query = mysqli_query($connect, "SELECT type_id FROM type_season_ticket WHERE status = 1");
 echo "<select name = 'type'>";
 while($object = mysqli_fetch_object($query)){
-echo "<option value = '$object->type_season_ticket_id' > $object->type_season_ticket_id </option>";
+echo "<option value = '$object->type_id' > $object->type_id </option>";
 }
 echo "</select>";
 ?>

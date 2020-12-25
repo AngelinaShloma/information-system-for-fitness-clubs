@@ -34,22 +34,34 @@ if ($_SESSION['user']['id'] != 1){
     <a class="exit" href="../index.php"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
   <nav class="site-nav">
       <ul>
-        <li><a href="menu-administrator-1.php"><i class="site-nav--icon"></i>Клиентская база/Абонементы</a></li> 
+        <li><a href="menu-administrator-1.php"><i class="site-nav--icon"></i>Клиентская база</a></li> 
         <li><a href="menu-administrator-2.php"><i class="site-nav--icon"></i>Типы абонементов</a></li>
       </ul> 
   </nav>
 </div>
 </header>
+<div class="background">
+
+<div class="options">
+      <h1> Опции </h1>
+      <form method="post" action="add_ticket.php">
+        <input type=hidden name="id" value="<?= $client_id ?>">
+        <button class="btn-sbmt" type="submit">Добавить абонемент</button>
+      </form>
+      <!-- <a href="add_client.php" target="_self" class="button">Добавить абонемент</a> -->
+  </div>
 <table id="myTable">
   <tr class="table-season-ticket">
-    <th>Период (в месяцах)</th>
+    <th>Длительность (в месяцах)</th>
     <th>Дата начала</th>
     <th>Дата окончания</th>
     <th colspan = "2">Время посещения</th>
     <th>Статус</th>
     </tr>
     <?php
-            $type = mysqli_query($connect, "SELECT season_ticket.type_season_ticket_id, date_format(date_start, '%d-%m-%Y'), duration, time_format(`time_start`, '%H-%i'), time_format(`time_end`, '%H-%i') FROM season_ticket, type_season_ticket WHERE season_ticket.client_id = '$client_id' AND season_ticket.type_season_ticket_id = type_season_ticket.type_season_ticket_id");
+            $type = mysqli_query($connect, "SELECT season_ticket.type_id, 
+            date_format(date_start, '%d-%m-%Y'), duration, time_format(`time_start`, '%H:%i'), time_format(`time_end`, '%H:%i') 
+            FROM season_ticket, type_season_ticket WHERE season_ticket.client_id = '$client_id' AND season_ticket.type_id = type_season_ticket.type_id");
             if(!$type){
                 echo 'Ошибка:' . mysqli_error($connect);
             } else {
@@ -76,9 +88,7 @@ if ($_SESSION['user']['id'] != 1){
     ?>
     
 </table>
-<form method="post" action="add_ticket.php">
-<input type=hidden name="id" value="<?= $client_id ?>">
-<button class="btn-sbmt" type="submit">+ Добавить абонемент</button>
-</form>
+          </div>
+
 </body>
 </html>

@@ -34,6 +34,7 @@ $client = mysqli_fetch_assoc($client);
     <meta charset="UTF-8">
     <title>FITNESS</title>
     <link rel="stylesheet" type="text/css" href="../styles/formStyle.scss"/>
+
 </head>
 <body>
   <form action="/administrator/updatephp.php" method="post">

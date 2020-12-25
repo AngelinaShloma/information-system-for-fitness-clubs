@@ -27,7 +27,7 @@ if ($_SESSION['user']['id'] != 1){
 <body>
   <form action="/administrator/add_clientphp.php" method="post">
     <label id="icon">ФИО</label><br>
-    <input type="text" name="FIO" required = "required"/><br>
+    <input type="text" name="FIO" required = "required" pattern="^[А-Яа-яЁё\s]+$"/><br>
     <label id="icon">Номер телефона</label><br>
     <input type="tel" name="phone" required = "required" pattern="8[0-9]{10}"/><br>
     <label id="icon">Дата рождения</label><br>
